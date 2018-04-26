@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
 
@@ -37,7 +38,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project getProject(String projectName) {
+    public Optional<Project> getProject(String projectName) {
         try {
             URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
             Path path = Paths.get(url.toURI());
@@ -47,14 +48,14 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
             for(Project project: config.getProjects()){
                 if(project.getName().equals(projectName)){
-                    return project;
+                    return Optional.of(project);
                 }
             }
         } catch(Exception e){
             e.printStackTrace();
         }
 
-        return null;
+        return Optional.empty();
     }
 
 }

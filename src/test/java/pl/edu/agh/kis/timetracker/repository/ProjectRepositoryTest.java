@@ -4,22 +4,27 @@ import org.junit.Assert;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import java.util.LinkedList;
+import java.util.Optional;
 
 public class ProjectRepositoryTest {
 
 
     @Test
     public void shouldSaveProjectToFile() {
-        String name = "dupa";
+        //given
+        String name = "testProject";
         Project project = new Project(name, new LinkedList<>());
-
 
         // when
         ProjectRepository repository = new ProjectRepositoryImpl();
         repository.saveProject(project);
 
         // then
-        Project foundProject = repository.getProject(name);
-        Assert.assertEquals(foundProject.getName(), name);
+        Optional<Project> foundProject = repository.getProject(name);
+        if(foundProject.isPresent()) {
+            Assert.assertEquals(foundProject.get().getName(), name);
+        } else {
+            Assert.fail();
+        }
     }
 }
