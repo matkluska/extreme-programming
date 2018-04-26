@@ -1,4 +1,4 @@
-package pl.edu.agh.kis;
+package pl.edu.agh.kis.timetracker;
 
 public class Main {
 
@@ -6,5 +6,4 @@ public class Main {
     System.out.println("Hello world");
   }
 
-  //Janek's commit
 }
