@@ -13,6 +13,28 @@ public class TimeService {
   }
 
   public void start(Task task) {
+    if (isInvalidNotStartedTask(task)) {
+      throw new IllegalArgumentException();
+    }
     task.setStart(LocalDateTime.now(clock));
+  }
+
+  private boolean isInvalidNotStartedTask(Task task) {
+    return task.getStart() != null
+        || task.getFinish() != null;
+  }
+
+  public void finish(Task task) {
+    LocalDateTime finishTime = LocalDateTime.now(clock);
+    if (isInvalidStartedTask(task, finishTime)) {
+      throw new IllegalArgumentException();
+    }
+    task.setFinish(finishTime);
+  }
+
+  private boolean isInvalidStartedTask(Task task, LocalDateTime finishTime) {
+    return task.getStart() == null
+        || task.getStart().isAfter(finishTime)
+        || task.getFinish() != null;
   }
 }
