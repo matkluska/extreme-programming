@@ -1,6 +1,7 @@
 package pl.edu.agh.kis.timetracker;
 
 import static java.util.Arrays.asList;
+import static java.util.Arrays.sort;
 import static java.util.Collections.singletonList;
 
 import java.time.Clock;
@@ -28,7 +29,7 @@ public class Main {
     while (true) {
       printAvailableTasks(printer, projects);
       Optional<Task> chosenTask = taskChooser.getChosenTask(projects);
-      chosenTask.ifPresent(task -> handleChosenTask(timeService, task));
+      chosenTask.ifPresent(task -> handleChosenTask(timeService, task, scanner));
 
     }
     // TODO GOODBYE MESSAGE
@@ -39,10 +40,12 @@ public class Main {
         .forEach(System.out::println);
   }
 
-  private static void handleChosenTask(TimeService timeService, Task task) {
+  private static void handleChosenTask(TimeService timeService, Task task, Scanner scanner) {
     System.out.println("Chosen task: " + task.getName());
     timeService.start(task);
     System.out.println("Type anything to stop");
+    scanner.next();
     timeService.finish(task);
+    System.out.println("Chosen task: " + task.getName() + " " + task.getStart() + " to " + task.getFinish());
   }
 }
