@@ -3,6 +3,7 @@ package pl.edu.agh.kis.timetracker.domain;
 import java.time.LocalDateTime;
 
 public class Task {
+
   private final String name;
   private LocalDateTime start;
   private LocalDateTime finish;
