@@ -13,13 +13,13 @@ public class TimeService {
   }
 
   public void start(Task task) {
-    if (isInvalidValidNotStartedTask(task)) {
+    if (isInvalidNotStartedTask(task)) {
       throw new IllegalArgumentException();
     }
     task.setStart(LocalDateTime.now(clock));
   }
 
-  private boolean isInvalidValidNotStartedTask(Task task) {
+  private boolean isInvalidNotStartedTask(Task task) {
     return task.getStart() != null
         || task.getFinish() != null;
   }
