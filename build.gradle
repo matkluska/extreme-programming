@@ -34,4 +34,4 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 }
 
-mainClassName = "pl.edu.agh.kis.Main"
+mainClassName = "pl.edu.agh.kis.timetracker.Main"
