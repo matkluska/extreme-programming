@@ -1,8 +1,9 @@
-package pl.edu.agh.kis.timetracker.repository;
+package pl.edu.agh.kis.timetracker.repository.impl;
 
 import com.google.gson.Gson;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.domain.ProjectsConfig;
+import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
 
 import java.io.PrintWriter;
 import java.net.URL;
