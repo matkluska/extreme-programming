@@ -2,7 +2,7 @@ package pl.edu.agh.kis.timetracker.service;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
 
@@ -14,7 +14,7 @@ public class ProjectFormatterTest {
   public void testIfFormatReturnsCorrectlyFormattedProjectText() {
     //given
     ProjectFormatter projectFormatter = new ProjectFormatter();
-    Project project = new Project(TEST_PROJECT_NAME, new ArrayList<>());
+    Project project = new Project(TEST_PROJECT_NAME, Collections.emptyList());
 
     //when
     String result = projectFormatter.format(project);
@@ -29,7 +29,7 @@ public class ProjectFormatterTest {
     ProjectFormatter projectFormatter = new ProjectFormatter();
 
     //when
-    String result = projectFormatter.format(null);
+    projectFormatter.format(null);
 
     //then throw IllegalArgumentException
   }

@@ -21,6 +21,7 @@ public class TaskFormatterTest {
     LocalDateTime finishDate = LocalDateTime.of(2018, 1, 13, 16, 45);
     task.setStart(startDate);
     task.setFinish(finishDate);
+
     //when
     String result = taskFormatter.format(task);
 
@@ -36,6 +37,7 @@ public class TaskFormatterTest {
     //given
     TaskFormatter taskFormatter = new TaskFormatter();
     Task task = new Task(TEST_TASK_NAME);
+
     //when
     String result = taskFormatter.format(task);
 
