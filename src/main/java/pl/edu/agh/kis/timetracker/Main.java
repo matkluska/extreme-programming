@@ -28,7 +28,6 @@ public class Main {
 
     helloPrinter.print();
 
-
     new CommandRouter(scanner, new TaskChooser(projects), new Printer(), new TaskPrintHandler(),
         projects).route();
 
