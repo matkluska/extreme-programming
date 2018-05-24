@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
-import pl.edu.agh.kis.timetracker.repository.impl.ProjectRepositoryImpl;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 public class ProjectRepositoryTest {
@@ -29,5 +29,17 @@ public class ProjectRepositoryTest {
         } else {
             Assert.fail();
         }
+    }
+
+    @Test
+    public void shouldGetAllProjects() {
+
+        // when
+        ProjectRepository repository = new ProjectRepositoryImpl();
+
+        // then
+        List<Project> foundProjects = repository.findAll();
+        Assert.assertNotNull(foundProjects);
+
     }
 }

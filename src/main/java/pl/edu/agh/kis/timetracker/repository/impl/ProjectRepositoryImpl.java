@@ -11,6 +11,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
@@ -59,4 +61,19 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         return Optional.empty();
     }
 
+    @Override
+    public List<Project> findAll() {
+        try {
+            URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
+            Path path = Paths.get(url.toURI());
+            byte[] encoded = Files.readAllBytes(path);
+            String json = new String(encoded, Charset.forName("UTF-8"));
+            ProjectsConfig config = new Gson().fromJson(json, ProjectsConfig.class);
+
+            return config.getProjects();
+        } catch(Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 }
