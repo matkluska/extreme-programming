@@ -1,6 +1,7 @@
-package pl.edu.agh.kis.timetracker.service;
+package pl.edu.agh.kis.timetracker.service.project;
 
 import pl.edu.agh.kis.timetracker.domain.Project;
+import pl.edu.agh.kis.timetracker.service.Formatter;
 
 public class ProjectFormatter implements Formatter<Project> {
 

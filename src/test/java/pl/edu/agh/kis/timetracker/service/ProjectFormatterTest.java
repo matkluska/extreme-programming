@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collections;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
+import pl.edu.agh.kis.timetracker.service.project.ProjectFormatter;
 
 public class ProjectFormatterTest {
 
