@@ -31,12 +31,6 @@ public class Main {
     new CommandRouter(scanner, new TaskChooser(projects), new Printer(), new TaskPrintHandler(),
         projects).route();
 
-    //    goodbyePrinter.print();
+    goodbyePrinter.print();
   }
-
-  private static void printAvailableTasks(Printer printer, List<Project> projects) {
-    printer.getTaskLines(projects)
-        .forEach(System.out::println);
-  }
-
 }

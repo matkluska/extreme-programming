@@ -24,9 +24,9 @@ public class CommandRouter {
 
   public void route() {
     while (true) {
-      printer.getTaskLines(projects);
+      printer.getTaskLines(projects).forEach(System.out::println);
 
-      final String command = scanner.nextLine();
+      final String command = scanner.next();
       if (isTaskChooser(command)) {
         taskChooser
             .getTaskWithNumber(Integer.parseInt(command)).ifPresent(
@@ -42,7 +42,6 @@ public class CommandRouter {
     return "exit".equalsIgnoreCase(command);
   }
 
-
   private boolean isTaskChooser(final String command) {
     try {
       Integer.parseInt(command);
@@ -52,6 +51,5 @@ public class CommandRouter {
     }
 
     return false;
-
   }
 }
