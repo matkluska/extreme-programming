@@ -1,13 +1,9 @@
 package pl.edu.agh.kis.timetracker;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-
 import java.util.List;
 import java.util.Scanner;
 import pl.edu.agh.kis.timetracker.domain.MessageType;
 import pl.edu.agh.kis.timetracker.domain.Project;
-import pl.edu.agh.kis.timetracker.domain.Task;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
 import pl.edu.agh.kis.timetracker.repository.impl.ProjectRepositoryImpl;
 import pl.edu.agh.kis.timetracker.service.CommandRouter;
@@ -33,6 +29,9 @@ public class Main {
 
     new CommandRouter(scanner, new TaskChooser(projects), new Printer(), new TaskPrintHandler(),
         projects, new TaskFormatter()).route();
+
+    projects.forEach(projectRepository::saveProject);
+    factory.build(MessageType.REPORT).print();
 
     goodbyePrinter.print();
   }

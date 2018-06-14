@@ -1,0 +1,253 @@
+{
+  "projects": [
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": [
+            {
+              "start": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 36,
+                  "second": 57,
+                  "nano": 588000000
+                }
+              },
+              "finish": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 2,
+                  "nano": 89000000
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": [
+            {
+              "start": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 3,
+                  "nano": 824000000
+                }
+              },
+              "finish": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 4,
+                  "nano": 608000000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": [
+            {
+              "start": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 45,
+                  "second": 38,
+                  "nano": 197000000
+                }
+              },
+              "finish": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 45,
+                  "second": 39,
+                  "nano": 246000000
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": [
+            {
+              "start": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 36,
+                  "second": 57,
+                  "nano": 588000000
+                }
+              },
+              "finish": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 2,
+                  "nano": 89000000
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": [
+            {
+              "start": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 3,
+                  "nano": 824000000
+                }
+              },
+              "finish": {
+                "date": {
+                  "year": 2018,
+                  "month": 6,
+                  "day": 14
+                },
+                "time": {
+                  "hour": 13,
+                  "minute": 37,
+                  "second": 4,
+                  "nano": 608000000
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    }
+  ]
+}

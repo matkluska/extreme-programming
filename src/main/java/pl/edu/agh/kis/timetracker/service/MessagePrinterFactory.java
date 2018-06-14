@@ -9,6 +9,8 @@ public class MessagePrinterFactory {
         return new HelloMessagePrinter();
       case BYE:
         return new GoodbyeMessagePrinter();
+      case REPORT:
+        return new ReportMessagePrinter();
     }
     throw new IllegalArgumentException();
   }

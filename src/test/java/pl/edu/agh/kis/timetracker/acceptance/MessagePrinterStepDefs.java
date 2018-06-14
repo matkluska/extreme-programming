@@ -53,4 +53,27 @@ public class MessagePrinterStepDefs {
     String allWrittenLines = new String(bo.toByteArray());
     assertTrue(allWrittenLines.contains("Goodbye"));
   }
+
+  @Given("^create report$")
+  public void createReportPrinter() {
+    messagePrinter = new MessagePrinterFactory().build(MessageType.REPORT);
+    System.setOut(new PrintStream(bo));
+  }
+
+  @When("^invoke report$")
+  public void invokeReportPrinterPrint() {
+    messagePrinter.print();
+  }
+
+  @Then("^print report$")
+  public void printReportMassage() throws IOException {
+    bo.flush();
+    String allWrittenLines = new String(bo.toByteArray());
+    assertTrue(allWrittenLines.contains("Project: project1\n"
+        + "Task: PROJ-1 task 1 [2018-06-14T13:36:57.588-2018-06-14T13:37:02.089]\n"
+        + "Task: PROJ-1 task 2 [2018-06-14T13:37:03.824-2018-06-14T13:37:04.608]\n"
+        + "Project: project2\n"
+        + "Task: PROJ-2 task 1\n"
+        + "Task: PROJ-2 task 2"));
+  }
 }

@@ -9,3 +9,8 @@ Feature: MessagePrinter
     Given create goodbye message printer
     When invoke goodbye message printer print
     Then print goodbye massage
+
+  Scenario: print report
+    Given create report
+    When invoke report
+    Then print report
