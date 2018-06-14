@@ -2,16 +2,21 @@ package pl.edu.agh.kis.timetracker.acceptance;
 
 import static org.junit.Assert.assertTrue;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.junit.Cucumber;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import org.junit.runner.RunWith;
 import pl.edu.agh.kis.timetracker.domain.MessageType;
 import pl.edu.agh.kis.timetracker.service.MessagePrinter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinterFactory;
 
+@RunWith(Cucumber.class)
+@CucumberOptions(format = {"pretty", "html:target/cucumber"})
 public class MessagePrinterStepDefs {
 
   private MessagePrinter messagePrinter;
