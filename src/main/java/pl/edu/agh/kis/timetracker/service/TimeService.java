@@ -3,6 +3,7 @@ package pl.edu.agh.kis.timetracker.service;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import pl.edu.agh.kis.timetracker.domain.Task;
+import pl.edu.agh.kis.timetracker.domain.TimeRange;
 
 public class TimeService {
 
@@ -16,25 +17,27 @@ public class TimeService {
     if (isInvalidNotStartedTask(task)) {
       throw new IllegalArgumentException();
     }
-    task.setStart(LocalDateTime.now(clock));
+    TimeRange timeRange = new TimeRange();
+    timeRange.setStart(LocalDateTime.now(clock));
+    task.getTimeRanges().add(timeRange);
   }
 
   private boolean isInvalidNotStartedTask(Task task) {
-    return task.getStart() != null
-        || task.getFinish() != null;
+    return !task.getTimeRanges().isEmpty()
+        && task.getTimeRanges().get(task.getTimeRanges().size() - 1).getStart() != null
+        && task.getTimeRanges().get(task.getTimeRanges().size() - 1).getFinish() == null;
   }
 
   public void finish(Task task) {
     LocalDateTime finishTime = LocalDateTime.now(clock);
-    if (isInvalidStartedTask(task, finishTime)) {
+    if (isInvalidStartedTask(task)) {
       throw new IllegalArgumentException();
     }
-    task.setFinish(finishTime);
+    task.getTimeRanges().get(task.getTimeRanges().size() - 1).setFinish(finishTime);
   }
 
-  private boolean isInvalidStartedTask(Task task, LocalDateTime finishTime) {
-    return task.getStart() == null
-        || task.getStart().isAfter(finishTime)
-        || task.getFinish() != null;
+  private boolean isInvalidStartedTask(Task task) {
+    return task.getTimeRanges().isEmpty()
+        || task.getTimeRanges().get(task.getTimeRanges().size() - 1).getStart() == null;
   }
 }

@@ -13,9 +13,18 @@ public class TaskFormatter implements Formatter<Task> {
     if (task == null) {
       throw new IllegalArgumentException("Task must not be null");
     }
-    return String
-        .format("Task: %s [%s-%s]", task.getName(), formatDate(task.getStart()),
-            formatDate(task.getFinish()));
+    StringBuilder builder = new StringBuilder("Task: ");
+    builder.append(task.getName());
+
+    task.getTimeRanges().forEach(timeRange -> {
+      builder.append(" [");
+      builder.append(formatDate(timeRange.getStart()));
+      builder.append("-");
+      builder.append(formatDate(timeRange.getFinish()));
+      builder.append("]");
+    });
+
+    return builder.toString();
   }
 
   private String formatDate(final LocalDateTime dateTime) {

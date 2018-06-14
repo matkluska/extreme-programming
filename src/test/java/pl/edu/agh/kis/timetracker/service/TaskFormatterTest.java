@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Task;
+import pl.edu.agh.kis.timetracker.domain.TimeRange;
 
 
 public class TaskFormatterTest {
@@ -19,8 +20,10 @@ public class TaskFormatterTest {
     Task task = new Task(TEST_TASK_NAME);
     LocalDateTime startDate = LocalDateTime.of(2018, 1, 13, 11, 45);
     LocalDateTime finishDate = LocalDateTime.of(2018, 1, 13, 16, 45);
-    task.setStart(startDate);
-    task.setFinish(finishDate);
+    TimeRange timeRange = new TimeRange();
+    timeRange.setStart(startDate);
+    timeRange.setFinish(finishDate);
+    task.getTimeRanges().add(timeRange);
 
     //when
     String result = taskFormatter.format(task);
@@ -42,8 +45,7 @@ public class TaskFormatterTest {
     String result = taskFormatter.format(task);
 
     //then
-    assertEquals(result, String
-        .format("Task: %s [%s-%s]", TEST_TASK_NAME, "_", "_"));
+    assertEquals(String.format("Task: %s", TEST_TASK_NAME), result);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -52,7 +54,7 @@ public class TaskFormatterTest {
     TaskFormatter taskFormatter = new TaskFormatter();
 
     //when
-    String result = taskFormatter.format(null);
+    taskFormatter.format(null);
 
     //then throw IllegalArgumentException
   }
