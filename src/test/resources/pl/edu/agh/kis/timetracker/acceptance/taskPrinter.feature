@@ -1,6 +1,6 @@
 Feature: TaskPrinter
 
   Scenario: print hello message
-    Given init handler
-    When handle task
-    Then shoudl set time ranges
+    Given start task handler
+    When handle user task start event
+    Then should register start event
