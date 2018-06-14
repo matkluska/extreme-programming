@@ -8,6 +8,8 @@ import java.util.Scanner;
 import pl.edu.agh.kis.timetracker.domain.MessageType;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.domain.Task;
+import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
+import pl.edu.agh.kis.timetracker.repository.impl.ProjectRepositoryImpl;
 import pl.edu.agh.kis.timetracker.service.CommandRouter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinterFactory;
@@ -18,9 +20,9 @@ import pl.edu.agh.kis.timetracker.service.TaskPrintHandler;
 public class Main {
 
   public static void main(String[] args) {
+    ProjectRepository projectRepository = new ProjectRepositoryImpl();
     final Scanner scanner = new Scanner(System.in);
-    final List<Project> projects = singletonList(new Project("projectName",
-        asList(new Task("task1"), new Task("task2"))));
+    final List<Project> projects = projectRepository.findAll();
 
     MessagePrinterFactory factory = new MessagePrinterFactory();
     MessagePrinter helloPrinter = factory.build(MessageType.HELLO);
