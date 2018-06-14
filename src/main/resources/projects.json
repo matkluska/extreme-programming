@@ -1,32 +1,30 @@
-{"projects":[
-  {
-    "name": "project1",
-    "tasks": [
-      {
-        "name": "PROJ-1 task 1",
-        "startTime": "1986-04-08 12:30",
-        "endTime": null
-      },
-      {
-        "name": "PROJ-1 task 2",
-        "startTime": "2018-04-05 12:30",
-        "endTime": "2018-04-08 12:30"
-      }
-    ]
-  },
-  {
-    "name": "project2",
-    "tasks": [
-      {
-        "name": "PROJ-2 task 1",
-        "startTime": "2000-04-29 13:30",
-        "endTime": null
-      },
-      {
-        "name": "PROJ-2 task 2",
-        "startTime": "2018-04-30 12:30",
-        "endTime": "2018-05-08 12:30"
-      }
-    ]
-  }
-]}
+{
+  "projects": [
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    }
+  ]
+}
