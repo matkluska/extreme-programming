@@ -13,6 +13,7 @@ import pl.edu.agh.kis.timetracker.service.MessagePrinter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinterFactory;
 import pl.edu.agh.kis.timetracker.service.Printer;
 import pl.edu.agh.kis.timetracker.service.TaskChooser;
+import pl.edu.agh.kis.timetracker.service.TaskFormatter;
 import pl.edu.agh.kis.timetracker.service.TaskPrintHandler;
 
 public class Main {
@@ -29,7 +30,7 @@ public class Main {
     helloPrinter.print();
 
     new CommandRouter(scanner, new TaskChooser(projects), new Printer(), new TaskPrintHandler(),
-        projects).route();
+        projects, new TaskFormatter()).route();
 
     goodbyePrinter.print();
   }

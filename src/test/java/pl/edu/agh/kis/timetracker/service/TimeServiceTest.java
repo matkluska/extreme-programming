@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import org.junit.Before;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Task;
+import pl.edu.agh.kis.timetracker.domain.TimeRange;
 
 public class TimeServiceTest {
 
@@ -32,25 +33,17 @@ public class TimeServiceTest {
     new TimeService(Clock.fixed(instant, zoneId)).start(task);
 
     // then
-    assertEquals(LocalDateTime.ofInstant(instant, zoneId), task.getStart());
-    assertNull(task.getFinish());
+    assertEquals(LocalDateTime.ofInstant(instant, zoneId), task.getTimeRanges().get(0).getStart());
+    assertNull(task.getTimeRanges().get(0).getFinish());
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowExceptionWhenTaskStarted() {
     // given
     Task task = new Task(NAME);
-    task.setStart(LocalDateTime.now());
-
-    // then
-    new TimeService(Clock.fixed(instant, zoneId)).start(task);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void shouldThrowExceptionWhenNotStartedTaskIsFinished() {
-    // given
-    Task task = new Task(NAME);
-    task.setFinish(LocalDateTime.now());
+    TimeRange timeRange = new TimeRange();
+    timeRange.setStart(LocalDateTime.now());
+    task.getTimeRanges().add(timeRange);
 
     // then
     new TimeService(Clock.fixed(instant, zoneId)).start(task);
@@ -61,40 +54,19 @@ public class TimeServiceTest {
     new TimeService(Clock.fixed(instant, zoneId)).finish(new Task(NAME));
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void shouldThrowExceptionWhenTaskFinishedBeforeStart() {
-    // given
-    Task task = new Task(NAME);
-    Clock clock = Clock.fixed(instant, zoneId);
-    task.setStart(LocalDateTime.now(clock).plusYears(1));
-
-    // when
-    new TimeService(clock).finish(task);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void shouldThrowExceptionWhenTaskAlreadyFinished() {
-    // given
-    Task task = new Task(NAME);
-    Clock clock = Clock.fixed(instant, zoneId);
-    task.setStart(LocalDateTime.now(clock));
-    task.setFinish(LocalDateTime.now(clock).plusDays(1));
-
-    // when
-    new TimeService(clock).finish(task);
-  }
-
   @Test
   public void shouldSetTaskFinishTime() {
     // given
     Task task = new Task(NAME);
     Clock clock = Clock.fixed(instant, zoneId);
-    task.setStart(LocalDateTime.now(clock).minusHours(1));
+    TimeRange timeRange = new TimeRange();
+    timeRange.setStart(LocalDateTime.now(clock).minusHours(1));
+    task.getTimeRanges().add(timeRange);
 
     // when
     new TimeService(clock).finish(task);
 
     // then
-    assertEquals(LocalDateTime.ofInstant(instant, zoneId), task.getFinish());
+    assertEquals(LocalDateTime.ofInstant(instant, zoneId), task.getTimeRanges().get(0).getFinish());
   }
 }

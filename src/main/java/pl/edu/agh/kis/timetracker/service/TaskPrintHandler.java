@@ -8,14 +8,12 @@ public class TaskPrintHandler {
 
   private TimeService timeService = new TimeService(Clock.systemUTC());
 
-  public void handleChosenTask(Task task, Scanner scanner) {
+  public void handleChosenTask(Task task, Scanner scanner, Formatter<Task> formatter) {
     System.out.println("Chosen task: " + task.getName());
     timeService.start(task);
     System.out.println("Type anything to stop");
     scanner.next();
     timeService.finish(task);
-    System.out.println("Chosen task: " + task.getName() + " " + task.getStart() + " to " + task.getFinish());
+    System.out.println(formatter.format(task));
   }
-
-
 }
