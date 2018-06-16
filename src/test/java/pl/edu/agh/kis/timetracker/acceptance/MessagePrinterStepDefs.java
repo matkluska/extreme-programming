@@ -9,6 +9,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import pl.edu.agh.kis.timetracker.domain.MessageType;
+import pl.edu.agh.kis.timetracker.domain.Project;
+import pl.edu.agh.kis.timetracker.factory.ProjectFactory;
+import pl.edu.agh.kis.timetracker.repository.impl.ProjectRepositoryImpl;
 import pl.edu.agh.kis.timetracker.service.MessagePrinter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinterFactory;
 
@@ -16,6 +19,10 @@ public class MessagePrinterStepDefs {
 
   private MessagePrinter messagePrinter;
   private ByteArrayOutputStream bo = new ByteArrayOutputStream();
+  private ProjectFactory projectFactory = new ProjectFactory();
+  private ProjectRepositoryImpl projectRepository = new ProjectRepositoryImpl();
+  private Project project = null;
+
 
   @Given("^create hello message printer$")
   public void createHelloMessagePrinter() {
@@ -76,4 +83,22 @@ public class MessagePrinterStepDefs {
         + "Task: PROJ-2 task 1\n"
         + "Task: PROJ-2 task 2"));
   }
+
+
+  @Given("^user choose project to modify$")
+  public void saveProjectToFile() {
+    project = projectFactory.createProject("project1","PROJ-1 task 1");
+  }
+
+  @When("^save and read from file$")
+  public void saveAndRead() {
+    projectRepository.saveProject(project);
+  }
+
+  @Then("^project successfully retrieved$")
+  public void retrieveAndCompare() throws IOException {
+    projectRepository.getProject(project.getName())
+            .ifPresent(projectFromFile -> assertTrue(projectFromFile.equals(project)));
+  }
+
 }

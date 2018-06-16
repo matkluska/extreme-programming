@@ -15,7 +15,7 @@ public class ProjectFormatterTest {
   public void testIfFormatReturnsCorrectlyFormattedProjectText() {
     //given
     ProjectFormatter projectFormatter = new ProjectFormatter();
-    Project project = new Project(TEST_PROJECT_NAME, Collections.emptyList());
+    Project project = new Project(TEST_PROJECT_NAME, Collections.emptySet());
 
     //when
     String result = projectFormatter.format(project);

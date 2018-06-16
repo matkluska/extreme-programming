@@ -5,9 +5,7 @@ import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ProjectRepositoryTest {
 
@@ -16,7 +14,7 @@ public class ProjectRepositoryTest {
     public void shouldSaveProjectToFile() {
         //given
         String name = "testProject";
-        Project project = new Project(name, new LinkedList<>());
+        Project project = new Project(name, new HashSet<>());
 
         // when
         ProjectRepository repository = new ProjectRepositoryImpl();
@@ -38,7 +36,7 @@ public class ProjectRepositoryTest {
         ProjectRepository repository = new ProjectRepositoryImpl();
 
         // then
-        List<Project> foundProjects = repository.findAll();
+        Set<Project> foundProjects = repository.findAll();
         Assert.assertNotNull(foundProjects);
 
     }

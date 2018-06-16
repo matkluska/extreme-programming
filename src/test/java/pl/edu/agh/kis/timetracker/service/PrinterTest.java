@@ -23,11 +23,11 @@ public class PrinterTest {
   @Test
   public void getTaskLines() {
     // given
-    Project project1 = new Project(FIRST_PROJECT_NAME, asList(new Task(TASK_1), new Task(TASK_2)));
-    Project project2 = new Project(SECOND_PROJECT_NAME, asList(new Task(TASK_3), new Task(TASK_4)));
+    Project project1 = new Project(FIRST_PROJECT_NAME, Stream.of(new Task(TASK_1), new Task(TASK_2)).collect(Collectors.toSet()));
+    Project project2 = new Project(SECOND_PROJECT_NAME, Stream.of(new Task(TASK_3), new Task(TASK_4)).collect(Collectors.toSet()));
 
     // when
-    Stream<String> taskLines = new Printer().getTaskLines(asList(project1, project2));
+    Stream<String> taskLines = new Printer().getTaskLines(Stream.of(project1, project2).collect(Collectors.toSet()));
 
     // then
     List<String> tasks = taskLines.collect(Collectors.toList());
