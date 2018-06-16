@@ -2,6 +2,8 @@ package pl.edu.agh.kis.timetracker.repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import pl.edu.agh.kis.timetracker.domain.Task;
 
 public interface TaskRepository {
@@ -10,5 +12,5 @@ public interface TaskRepository {
 
   Optional<Task> findByName(final String name);
 
-  List<Task> findAll();
+  Set<Task> findAll();
 }

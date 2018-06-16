@@ -1,9 +1,7 @@
 package pl.edu.agh.kis.timetracker.repository.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+
 import pl.edu.agh.kis.timetracker.domain.Task;
 import pl.edu.agh.kis.timetracker.repository.TaskRepository;
 
@@ -28,7 +26,7 @@ public class TaskFromMapRepository implements TaskRepository {
   }
 
   @Override
-  public List<Task> findAll() {
-    return new ArrayList<>(tasks.values());
+  public Set<Task> findAll() {
+    return new HashSet<>(tasks.values());
   }
 }

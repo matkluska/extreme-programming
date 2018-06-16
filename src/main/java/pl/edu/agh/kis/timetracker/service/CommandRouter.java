@@ -1,7 +1,10 @@
 package pl.edu.agh.kis.timetracker.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.domain.Task;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
@@ -12,13 +15,13 @@ public class CommandRouter {
   private TaskChooser taskChooser;
   private Printer printer;
   private TaskPrintHandler taskHandeler;
-  private List<Project> projects;
+  private Set<Project> projects;
   private final Formatter<Task> taskFormatter;
   private ProjectRepository projectRepository;
 
   public CommandRouter(Scanner scanner, TaskChooser taskChooser,
                        Printer printer, TaskPrintHandler taskHandeler,
-                       List<Project> projects, Formatter<Task> taskFormatter, ProjectRepository projectRepository) {
+                       Set<Project> projects, Formatter<Task> taskFormatter, ProjectRepository projectRepository) {
     this.scanner = scanner;
     this.taskChooser = taskChooser;
     this.printer = printer;
@@ -36,8 +39,10 @@ public class CommandRouter {
       if (isTaskChooser(command)) {
         taskChooser
             .getTaskWithNumber(Integer.parseInt(command)).ifPresent(
-            task -> taskHandeler.handleChosenTask(task, scanner, taskFormatter)
+            task ->
+              taskHandeler.handleChosenTask(task, scanner, taskFormatter)
         );
+
         projects.forEach(projectRepository::saveProject);
       } else if (isExit(command)) {
         break;

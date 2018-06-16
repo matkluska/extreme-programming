@@ -1,15 +1,17 @@
 package pl.edu.agh.kis.timetracker.domain;
 
 import java.util.List;
+import java.util.Set;
 
 public class ProjectsConfig {
-    List<Project> projects;
+    Set<Project> projects;
 
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
+
 }

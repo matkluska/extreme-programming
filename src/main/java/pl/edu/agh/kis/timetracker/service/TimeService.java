@@ -20,6 +20,7 @@ public class TimeService {
     TimeRange timeRange = new TimeRange();
     timeRange.setStart(LocalDateTime.now(clock));
     task.getTimeRanges().add(timeRange);
+    System.out.println(task.getTimeRanges().get(0).getStart());
   }
 
   private boolean isInvalidNotStartedTask(Task task) {

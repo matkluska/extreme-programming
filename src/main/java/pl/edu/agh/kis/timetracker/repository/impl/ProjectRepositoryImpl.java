@@ -9,9 +9,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.domain.ProjectsConfig;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
@@ -27,9 +26,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       Path path = Paths.get(url.toURI());
       byte[] encoded = Files.readAllBytes(path);
 
+
       String json = new String(encoded, Charset.forName("UTF-8"));
       ProjectsConfig config = new Gson().fromJson(json, ProjectsConfig.class);
-
+      config.getProjects().remove(project);
       config.getProjects().add(project);
       String jsonToSave = new Gson().toJson(config);
 
@@ -64,7 +64,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   @Override
-  public List<Project> findAll() {
+  public Set<Project> findAll() {
     try {
       URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
       Path path = Paths.get(url.toURI());
@@ -75,7 +75,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       return config.getProjects();
     } catch (Exception e) {
       e.printStackTrace();
-      return new ArrayList<>();
+      return new HashSet<>();
     }
   }
 }

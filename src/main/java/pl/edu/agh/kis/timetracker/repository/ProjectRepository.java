@@ -4,6 +4,7 @@ import pl.edu.agh.kis.timetracker.domain.Project;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface ProjectRepository {
 
@@ -11,5 +12,5 @@ public interface ProjectRepository {
 
     Optional<Project> getProject(String projectName);
 
-    List<Project> findAll();
+    Set<Project> findAll();
 }

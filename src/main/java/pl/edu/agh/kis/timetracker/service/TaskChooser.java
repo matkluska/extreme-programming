@@ -2,14 +2,16 @@ package pl.edu.agh.kis.timetracker.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.domain.Task;
 
 public class TaskChooser {
 
-  private final List<Project> projects;
+  private final Set<Project> projects;
 
-  public TaskChooser(List<Project> projects) {
+  public TaskChooser(Set<Project> projects) {
     this.projects = projects;
   }
 

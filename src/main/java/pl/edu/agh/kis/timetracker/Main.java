@@ -2,6 +2,8 @@ package pl.edu.agh.kis.timetracker;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+
 import pl.edu.agh.kis.timetracker.domain.MessageType;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
@@ -19,7 +21,7 @@ public class Main {
   public static void main(String[] args) {
     ProjectRepository projectRepository = new ProjectRepositoryImpl();
     final Scanner scanner = new Scanner(System.in);
-    final List<Project> projects = projectRepository.findAll();
+    final Set<Project> projects = projectRepository.findAll();
 
     MessagePrinterFactory factory = new MessagePrinterFactory();
     MessagePrinter helloPrinter = factory.build(MessageType.HELLO);
