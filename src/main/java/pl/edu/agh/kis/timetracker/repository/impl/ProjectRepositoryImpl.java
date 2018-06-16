@@ -1,6 +1,8 @@
 package pl.edu.agh.kis.timetracker.repository.impl;
 
 import com.google.gson.Gson;
+
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -30,7 +32,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
       config.getProjects().add(project);
       String jsonToSave = new Gson().toJson(config);
-      PrintWriter out = new PrintWriter(path.toString());
+
+      PrintWriter out = null;
+      out = new PrintWriter(new FileOutputStream(path.toString(), false));
       out.println(jsonToSave);
       out.close();
     } catch (Exception e) {

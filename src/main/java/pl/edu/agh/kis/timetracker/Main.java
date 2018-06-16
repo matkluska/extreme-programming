@@ -28,9 +28,9 @@ public class Main {
     helloPrinter.print();
 
     new CommandRouter(scanner, new TaskChooser(projects), new Printer(), new TaskPrintHandler(),
-        projects, new TaskFormatter()).route();
+        projects, new TaskFormatter(), projectRepository).route();
 
-    projects.forEach(projectRepository::saveProject);
+
     factory.build(MessageType.REPORT).print();
 
     goodbyePrinter.print();
