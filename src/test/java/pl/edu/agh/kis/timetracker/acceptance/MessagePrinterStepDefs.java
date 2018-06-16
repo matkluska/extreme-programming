@@ -76,12 +76,15 @@ public class MessagePrinterStepDefs {
   public void printReportMassage() throws IOException {
     bo.flush();
     String allWrittenLines = new String(bo.toByteArray());
-    assertTrue(allWrittenLines.contains("Project: project1\n"
-        + "Task: PROJ-1 task 1 [2018-06-14T13:36:57.588-2018-06-14T13:37:02.089]\n"
-        + "Task: PROJ-1 task 2 [2018-06-14T13:37:03.824-2018-06-14T13:37:04.608]\n"
+    assertTrue(allWrittenLines.contains(   "Project: project1\n"
+        + "Task: PROJ-1 task 1\n"
+        + "Task: PROJ-1 task 2\n"
         + "Project: project2\n"
         + "Task: PROJ-2 task 1\n"
-        + "Task: PROJ-2 task 2"));
+        + "Task: PROJ-2 task 2\n"
+        + "Project: testProject\n"
+        + "Project: testProject\n"
+    ));
   }
 
 
