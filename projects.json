@@ -1,0 +1,30 @@
+{
+  "projects": [
+    {
+      "name": "project1",
+      "tasks": [
+        {
+          "name": "PROJ-1 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-1 task 2",
+          "timeRanges": []
+        }
+      ]
+    },
+    {
+      "name": "project2",
+      "tasks": [
+        {
+          "name": "PROJ-2 task 1",
+          "timeRanges": []
+        },
+        {
+          "name": "PROJ-2 task 2",
+          "timeRanges": []
+        }
+      ]
+    }
+  ]
+}

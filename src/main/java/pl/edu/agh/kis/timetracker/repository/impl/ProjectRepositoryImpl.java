@@ -3,7 +3,6 @@ package pl.edu.agh.kis.timetracker.repository.impl;
 import com.google.gson.Gson;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,13 +16,13 @@ import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
 
-  private final String PROJECTS_FILE = "projects.json";
+  private final String PROJECTS_FILE = "./projects.json";
 
   @Override
   public void saveProject(Project project) {
     try {
-      URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
-      Path path = Paths.get(url.toURI());
+//      URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
+      Path path = Paths.get(PROJECTS_FILE);
       byte[] encoded = Files.readAllBytes(path);
 
       String json = new String(encoded, Charset.forName("UTF-8"));
@@ -48,8 +47,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   @Override
   public Optional<Project> getProject(String projectName) {
     try {
-      URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
-      Path path = Paths.get(url.toURI());
+      Path path = Paths.get(PROJECTS_FILE);
       byte[] encoded = Files.readAllBytes(path);
       String json = new String(encoded, Charset.forName("UTF-8"));
       ProjectsConfig config = new Gson().fromJson(json, ProjectsConfig.class);
@@ -69,8 +67,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   @Override
   public Set<Project> findAll() {
     try {
-      URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
-      Path path = Paths.get(url.toURI());
+      Path path = Paths.get(PROJECTS_FILE);
       byte[] encoded = Files.readAllBytes(path);
       String json = new String(encoded, Charset.forName("UTF-8"));
       ProjectsConfig config = new Gson().fromJson(json, ProjectsConfig.class);
@@ -85,8 +82,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   @Override
   public Set<Project> removeAll() {
     try {
-      URL url = getClass().getClassLoader().getResource(PROJECTS_FILE);
-      Path path = Paths.get(url.toURI());
+      Path path = Paths.get(PROJECTS_FILE);
       byte[] encoded = Files.readAllBytes(path);
       String json = new String(encoded, Charset.forName("UTF-8"));
       ProjectsConfig config = new Gson().fromJson(json, ProjectsConfig.class);

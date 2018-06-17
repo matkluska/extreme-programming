@@ -1,4 +1,4 @@
-package pl.edu.agh.kis.timetracker.acceptance;
+package cucumber.steps;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -24,7 +24,7 @@ import pl.edu.agh.kis.timetracker.service.TaskFormatter;
 import pl.edu.agh.kis.timetracker.service.TaskPrintHandler;
 import pl.edu.agh.kis.timetracker.utils.DatabaseHandler;
 
-public class TaskRegistrationStepDefs {
+public class TaskRegistrationSteps {
 
   private static final ByteArrayOutputStream OUT = new ByteArrayOutputStream();
   private CommandRouter commandRouter;

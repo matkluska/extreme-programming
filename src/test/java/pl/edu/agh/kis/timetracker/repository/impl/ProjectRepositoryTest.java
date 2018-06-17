@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import pl.edu.agh.kis.timetracker.domain.Project;
 import pl.edu.agh.kis.timetracker.repository.ProjectRepository;
