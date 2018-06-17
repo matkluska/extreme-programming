@@ -6,7 +6,15 @@ import pl.edu.agh.kis.timetracker.domain.Task;
 
 public class TaskPrintHandler {
 
-  private TimeService timeService = new TimeService(Clock.systemUTC());
+  private TimeService timeService;
+
+  public TaskPrintHandler() {
+    timeService = new TimeService(Clock.systemUTC());
+  }
+
+  public TaskPrintHandler(final Clock clock) {
+    timeService = new TimeService(clock);
+  }
 
   public void handleChosenTask(Task task, Scanner scanner, Formatter<Task> formatter) {
     System.out.println("Chosen task: " + task.getName());
