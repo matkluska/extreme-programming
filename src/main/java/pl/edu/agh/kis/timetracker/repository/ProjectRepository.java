@@ -10,7 +10,11 @@ public interface ProjectRepository {
 
     void saveProject(Project project);
 
+    void saveAll(Set<Project> projects);
+
     Optional<Project> getProject(String projectName);
 
     Set<Project> findAll();
+
+    Set<Project> removeAll();
 }
