@@ -14,6 +14,7 @@ import pl.edu.agh.kis.timetracker.factory.ProjectFactory;
 import pl.edu.agh.kis.timetracker.repository.impl.ProjectRepositoryImpl;
 import pl.edu.agh.kis.timetracker.service.MessagePrinter;
 import pl.edu.agh.kis.timetracker.service.MessagePrinterFactory;
+import pl.edu.agh.kis.timetracker.utils.DatabaseHandler;
 
 public class MessagePrinterStepDefs {
 
@@ -63,6 +64,7 @@ public class MessagePrinterStepDefs {
 
   @Given("^create report$")
   public void createReportPrinter() {
+    DatabaseHandler.instance().restoreDatabase();
     messagePrinter = new MessagePrinterFactory().build(MessageType.REPORT);
     System.setOut(new PrintStream(bo));
   }
@@ -76,21 +78,19 @@ public class MessagePrinterStepDefs {
   public void printReportMassage() throws IOException {
     bo.flush();
     String allWrittenLines = new String(bo.toByteArray());
-    assertTrue(allWrittenLines.contains(   "Project: project1\n"
+    assertTrue(allWrittenLines.contains("Project: project1\n"
         + "Task: PROJ-1 task 1\n"
         + "Task: PROJ-1 task 2\n"
         + "Project: project2\n"
         + "Task: PROJ-2 task 1\n"
-        + "Task: PROJ-2 task 2\n"
-        + "Project: testProject\n"
-        + "Project: testProject\n"
-    ));
+        + "Task: PROJ-2 task 2\n"));
   }
 
 
   @Given("^user choose project to modify$")
   public void saveProjectToFile() {
-    project = projectFactory.createProject("project1","PROJ-1 task 1");
+    DatabaseHandler.instance().restoreDatabase();
+    project = projectFactory.createProject("project1", "PROJ-1 task 1");
   }
 
   @When("^save and read from file$")
@@ -101,7 +101,6 @@ public class MessagePrinterStepDefs {
   @Then("^project successfully retrieved$")
   public void retrieveAndCompare() throws IOException {
     projectRepository.getProject(project.getName())
-            .ifPresent(projectFromFile -> assertTrue(projectFromFile.equals(project)));
+        .ifPresent(projectFromFile -> assertTrue(projectFromFile.equals(project)));
   }
-
 }
