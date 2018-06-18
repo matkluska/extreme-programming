@@ -32,9 +32,10 @@ public class TaskRegistrationSteps {
   @Given("^select first project and register task$")
   public void givenSelectFirstProjectAndRegisterTask() {
     DatabaseHandler.instance().restoreDatabase();
-    final String givenRouterInput = "1\n" +
-        "stop\n" +
-        "exit\n";
+    final String newLine = System.lineSeparator();
+    final String givenRouterInput = "1" + newLine +
+        "stop" + newLine +
+        "exit" + newLine;
     commandRouter = createCommandRouter(givenRouterInput);
 
     System.setOut(new PrintStream(OUT));
@@ -48,18 +49,19 @@ public class TaskRegistrationSteps {
   @Then("^print finished tasks")
   public void thenShouldRegisterTask() {
     final String output = OUT.toString();
-    final String expected = "1. project1: PROJ-1 task 1\n"
-        + "2. project1: PROJ-1 task 2\n"
-        + "3. project2: PROJ-2 task 1\n"
-        + "4. project2: PROJ-2 task 2\n"
-        + "Chosen task: PROJ-1 task 1\n"
-        + "2007-12-03T10:15:30\n"
-        + "Type anything to stop\n"
-        + "Task: PROJ-1 task 1 [2007-12-03T10:15:30-2007-12-03T10:15:30]\n"
-        + "1. project1: PROJ-1 task 1\n"
-        + "2. project1: PROJ-1 task 2\n"
-        + "3. project2: PROJ-2 task 1\n"
-        + "4. project2: PROJ-2 task 2\n";
+    final String newLine = System.lineSeparator();
+    final String expected = "1. project1: PROJ-1 task 1" + newLine
+        + "2. project1: PROJ-1 task 2" + newLine
+        + "3. project2: PROJ-2 task 1" + newLine
+        + "4. project2: PROJ-2 task 2" + newLine
+        + "Chosen task: PROJ-1 task 1" + newLine
+        + "2007-12-03T10:15:30" + newLine
+        + "Type anything to stop" + newLine
+        + "Task: PROJ-1 task 1 [2007-12-03T10:15:30-2007-12-03T10:15:30]" + newLine
+        + "1. project1: PROJ-1 task 1" + newLine
+        + "2. project1: PROJ-1 task 2" + newLine
+        + "3. project2: PROJ-2 task 1" + newLine
+        + "4. project2: PROJ-2 task 2" + newLine;
 
     assertEquals(expected, output);
   }

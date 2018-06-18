@@ -34,11 +34,12 @@ public class ReportDisplaySteps {
   public void printReportMassage() throws IOException {
     OUT.flush();
     String allWrittenLines = new String(OUT.toByteArray());
-    assertTrue(allWrittenLines.contains("Project: project1\n"
-        + "Task: PROJ-1 task 1\n"
-        + "Task: PROJ-1 task 2\n"
-        + "Project: project2\n"
-        + "Task: PROJ-2 task 1\n"
-        + "Task: PROJ-2 task 2\n"));
+    String newLine = System.lineSeparator();
+    assertTrue(allWrittenLines.contains("Project: project1" + newLine
+        + "Task: PROJ-1 task 1" + newLine
+        + "Task: PROJ-1 task 2" + newLine
+        + "Project: project2" + newLine
+        + "Task: PROJ-2 task 1" + newLine
+        + "Task: PROJ-2 task 2" + newLine));
   }
 }
