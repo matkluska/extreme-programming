@@ -1,8 +1,10 @@
 package pl.edu.agh.kis.timetracker.service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import pl.edu.agh.kis.timetracker.domain.Task;
+import pl.edu.agh.kis.timetracker.domain.TimeRange;
 
 public class TaskFormatter implements Formatter<Task> {
 
@@ -15,21 +17,18 @@ public class TaskFormatter implements Formatter<Task> {
     }
     StringBuilder builder = new StringBuilder("Task: ");
     builder.append(task.getName());
+    builder.append(" ");
 
-    task.getTimeRanges().forEach(timeRange -> {
-      builder.append(" [");
-      builder.append(formatDate(timeRange.getStart()));
-      builder.append("-");
-      builder.append(formatDate(timeRange.getFinish()));
-      builder.append("]");
-    });
+    long sumSeconds = 0;
+    for (TimeRange timeRange : task.getTimeRanges()) {
+      sumSeconds += timeRange.getFinish().toInstant(ZoneOffset.UTC).getEpochSecond()
+          - timeRange.getStart().toInstant(ZoneOffset.UTC).getEpochSecond();
+    }
+
+    builder.append(LocalDateTime.ofEpochSecond(sumSeconds, 0, ZoneOffset.UTC)
+        .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
 
     return builder.toString();
   }
-
-  private String formatDate(final LocalDateTime dateTime) {
-    return dateTime != null ? dateTime.format(DATE_TIME_FORMATTER) : "_";
-  }
-
 
 }

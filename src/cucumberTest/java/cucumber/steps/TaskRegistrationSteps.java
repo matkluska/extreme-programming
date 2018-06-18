@@ -57,7 +57,7 @@ public class TaskRegistrationSteps {
         + "Chosen task: PROJ-1 task 1" + newLine
         + "2007-12-03T10:15:30" + newLine
         + "Type anything to stop" + newLine
-        + "Task: PROJ-1 task 1 [2007-12-03T10:15:30-2007-12-03T10:15:30]" + newLine
+        + "Task: PROJ-1 task 1 00:01:00" + newLine
         + "1. project1: PROJ-1 task 1" + newLine
         + "2. project1: PROJ-1 task 2" + newLine
         + "3. project2: PROJ-2 task 1" + newLine
@@ -71,7 +71,7 @@ public class TaskRegistrationSteps {
         new ByteArrayInputStream(givenRouterInput.getBytes()));
     final ProjectRepository repository = new ProjectRepositoryImpl();
     final Clock clock = mock(Clock.class);
-    when(clock.instant()).thenReturn(Instant.parse("2007-12-03T10:15:30.00Z"));
+    when(clock.instant()).thenReturn(Instant.parse("2007-12-03T10:15:30.00Z"), Instant.parse("2007-12-03T10:16:30.00Z"));
     when(clock.getZone()).thenReturn(ZoneId.of("Z"));
 
     return new CommandRouter(stubbedScanner, new TaskChooser(repository.findAll()), new Printer(),

@@ -36,10 +36,10 @@ public class ReportDisplaySteps {
     String allWrittenLines = new String(OUT.toByteArray());
     String newLine = System.lineSeparator();
     assertTrue(allWrittenLines.contains("Project: project1" + newLine
-        + "Task: PROJ-1 task 1" + newLine
-        + "Task: PROJ-1 task 2" + newLine
+        + "Task: PROJ-1 task 1 00:00:00" + newLine
+        + "Task: PROJ-1 task 2 00:00:00" + newLine
         + "Project: project2" + newLine
-        + "Task: PROJ-2 task 1" + newLine
-        + "Task: PROJ-2 task 2" + newLine));
+        + "Task: PROJ-2 task 1 00:00:00" + newLine
+        + "Task: PROJ-2 task 2 00:00:00" + newLine));
   }
 }
