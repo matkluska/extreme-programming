@@ -30,9 +30,7 @@ public class TaskFormatterTest {
 
     //then
     assertEquals(result, String
-        .format("Task: %s [%s-%s]", task.getName(),
-            startDate.format(DateTimeFormatter.ISO_DATE_TIME),
-            finishDate.format(DateTimeFormatter.ISO_DATE_TIME)));
+        .format("Task: %s 05:00:00", task.getName()));
   }
 
   @Test
@@ -45,7 +43,7 @@ public class TaskFormatterTest {
     String result = taskFormatter.format(task);
 
     //then
-    assertEquals(String.format("Task: %s", TEST_TASK_NAME), result);
+    assertEquals(String.format("Task: %s 00:00:00", TEST_TASK_NAME), result);
   }
 
   @Test(expected = IllegalArgumentException.class)
