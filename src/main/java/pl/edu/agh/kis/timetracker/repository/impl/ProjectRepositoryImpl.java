@@ -90,6 +90,12 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       final Set<Project> projects = config.getProjects();
       config.getProjects().clear();
 
+      String jsonToSave = new Gson().toJson(config);
+
+      PrintWriter out = new PrintWriter(new FileOutputStream(path.toString(), false));
+      out.println(jsonToSave);
+      out.close();
+
       return projects;
     } catch (Exception e) {
       e.printStackTrace();

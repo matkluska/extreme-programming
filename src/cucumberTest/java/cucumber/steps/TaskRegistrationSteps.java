@@ -29,13 +29,9 @@ public class TaskRegistrationSteps {
   private static final ByteArrayOutputStream OUT = new ByteArrayOutputStream();
   private CommandRouter commandRouter;
 
-  @Before(order = 1)
-  public void cleanUpDatabase() {
-    DatabaseHandler.instance().restoreDatabase();
-  }
-
   @Given("^select first project and register task$")
   public void givenSelectFirstProjectAndRegisterTask() {
+    DatabaseHandler.instance().restoreDatabase();
     final String givenRouterInput = "1\n" +
         "stop\n" +
         "exit\n";
